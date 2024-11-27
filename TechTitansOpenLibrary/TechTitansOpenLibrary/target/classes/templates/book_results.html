@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultados de Búsqueda</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resultados de la búsqueda</h1>
+    <div>
+        <form action="/search" method="post">
+            <input type="text" name="query" placeholder="Buscar..." required>
+            <select name="type">
+                <option value="q">Título</option>
+                <option value="author">Autor</option>
+            </select>
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Libros encontrados:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Portada</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Año</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book : ${books}">
+                    <td>
+                        <img th:src="${book.coverImage}" alt="Portada del libro">
+                    </td>
+                    <td th:text="${book.title}">Título</td>
+                    <td>
+                        <img th:src="${book.authorImage}" alt="Imagen del autor">
+                        <br>
+                        <span th:text="${book.author}">Autor</span>
+                    </td>
+                    <td th:text="${book.year}">Año</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

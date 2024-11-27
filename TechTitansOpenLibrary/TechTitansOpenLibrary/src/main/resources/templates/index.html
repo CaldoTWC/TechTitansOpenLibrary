@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Library Search</title>
+</head>
+<body>
+    <h1>Buscar en Open Library</h1>
+    <form action="/search" method="post">
+        <label for="query">Consulta:</label>
+        <input type="text" id="query" name="query" required>
+        <label for="type">Tipo:</label>
+        <select id="type" name="type">
+            <option value="title">Título</option>
+            <option value="author">Autor</option>
+        </select>
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>

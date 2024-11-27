@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Results</title>
+</head>
+<body>
+    <h1>Resultados de Autores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Foto</th>
+                <th>Nombre</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Obra Principal</th>
+                <th>Conteo de Obras</th>
+                <th>Trabajos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <th:block th:each="author : ${authorResults.authors}">
+                <tr>
+                    <!-- Imagen del autor -->
+                    <td>
+                        <img th:src="${author.authorImage}" alt="Foto del Autor" style="width: 100px; height: auto;">
+                    </td>
+                    <td th:text="${author.name}"></td>
+                    <td th:text="${author.birth_date != null ? author.birth_date : 'Desconocida'}"></td>
+                    <td th:text="${author.top_work != null ? author.top_work : 'No Disponible'}"></td>
+                    <td th:text="${author.work_count}"></td>
+                    <td>
+                        <ul>
+                            <li th:each="work : ${author.works}" th:text="${work}"></li>
+                        </ul>
+                    </td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+    <a href="/">Volver</a>
+</body>
+</html>
